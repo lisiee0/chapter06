@@ -9,6 +9,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.util.Scanner;
 
 public class Client {
 
@@ -35,9 +36,20 @@ public class Client {
 		InputStream is= socket.getInputStream();
 		InputStreamReader isr= new InputStreamReader(is, "UTF-8");
 		BufferedReader br= new BufferedReader(isr);
-
+		
+		// Scanner (키보드 입력용)
+		Scanner sc= new Scanner(System.in);
+		
+		
+		// 반복구간
+		
+		while(true) {
+			String str= sc.nextLine();
+			if("/q".equals(str)) {
+				System.out.println("[종료키 입력]");
+				break;
+			}
 		// 메세지 보내기
-		String str= "안녕하세요";
 		bw.write(str);
 		bw.newLine();
 		bw.flush();
@@ -45,10 +57,16 @@ public class Client {
 		// 메세지 받기
 		String reMsg= br.readLine();
 		System.out.println("server: ["+reMsg+"]");
+		}
+
+		// 반복구간 끝
 		
+		System.out.println("====================================");
+		System.out.println("<클라이언트 종료>");
 		br.close();
 		bw.close();
 		socket.close();
+		sc.close();
 	}
 
 }

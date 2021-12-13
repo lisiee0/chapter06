@@ -38,24 +38,38 @@ public class Server {
 		OutputStreamWriter osw= new OutputStreamWriter(os, "UTF-8");
 		BufferedWriter bw= new BufferedWriter(osw);
 		
-		// 메세지 받기
-		String msg= br.readLine();
-		System.out.println("받은메세지: "+msg);
 		
-		
+		// 반복구간
+		while(true) {
+			// 메세지 받기
+			String msg= br.readLine();
+			
+			if(msg==null) {
+				System.out.println("클라이언트 종료키 입력");
+				break;
+			}
+			
+			System.out.println("받은메세지: "+msg);
+			
 		// 메세지 보내기
 		bw.write(msg);
 		bw.newLine();
 		bw.flush();
+			
+		}
 		
+		// 반복구간 끝
 		
+		System.out.println("====================================");
+		System.out.println("<서버 종료>");
+
 		bw.close();
 		br.close();
 		
 		socket.close();
 		serverSocket.close();
-		// 192.168.75.7 
 		
+		// 192.168.75.7 
 		//192.168.0.7
 	}
 
