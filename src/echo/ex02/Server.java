@@ -1,4 +1,4 @@
-package echo.ex01;
+package echo.ex02;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
