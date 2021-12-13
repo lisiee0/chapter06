@@ -11,8 +11,7 @@ public class ThreadApp {
 		thread01.start();
 		thread02.start();
 		thread03.start();
-		
-
 	}
-
 }
+
+
